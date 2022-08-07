@@ -6,6 +6,8 @@ import com.intern.secondproject.dao.pojo.Ctype;
 import com.intern.secondproject.mapper.sql.QueryMapperSql;
 import org.apache.ibatis.annotations.*;
 
+import java.util.List;
+
 @Mapper
 public interface QueryMapper {
     @InsertProvider(type = QueryMapperSql.class,method = "insertBSql")
@@ -24,13 +26,13 @@ public interface QueryMapper {
     int deleteByClick(String keyWord);
 
     @SelectProvider(type = QueryMapperSql.class,method = "queryASql")
-    Atype queryA(String keyWord);
+    List<Atype> queryA(String keyWord);
 
     @SelectProvider(type = QueryMapperSql.class,method = "queryBSql")
-    Btype queryB(String keyWord);
+    List<Btype> queryB(String keyWord);
 
     @SelectProvider(type = QueryMapperSql.class,method = "queryCSql")
-    Ctype queryC(String keyWord);
+    List<Ctype> queryC(String keyWord);
 
     @SelectProvider(type = QueryMapperSql.class,method = "calculateCSql")
     int calculateC(String keyWord);

@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.List;
 
 @Service
 @SuppressWarnings("rawtypes")
@@ -66,16 +67,16 @@ public class QueryServiceImpl implements QueryService {
     public JsonResult query(String table, String keyWord) {
         Object temp =new Object();
         if("A".equals(table)){
-            Atype atype =  queryMapper.queryA(keyWord);
+            List<Atype>atype =  queryMapper.queryA(keyWord);
             return JsonResult.success(atype,HttpStatus.OK.getReasonPhrase());
         }
         if ("B".equals(table)){
-            Btype btype=queryMapper.queryB(keyWord);
+            List<Btype> btype=queryMapper.queryB(keyWord);
             return JsonResult.success(btype,HttpStatus.OK.getReasonPhrase());
         }
 
         if("C".equals(table)){
-            Ctype ctype=queryMapper.queryC(keyWord);
+            List<Ctype> ctype=queryMapper.queryC(keyWord);
             return JsonResult.success(ctype,HttpStatus.OK.getReasonPhrase());
         }
 
@@ -144,7 +145,7 @@ public class QueryServiceImpl implements QueryService {
         int temp=0;
         temp = queryMapper.calculateC(keyWord);
         if (temp == 1) {
-            Ctype ctype= queryMapper.queryC(keyWord);
+            List<Ctype> ctype= queryMapper.queryC(keyWord);
             return JsonResult.success(ctype, HttpStatus.OK.getReasonPhrase());
         } else {
             return JsonResult.fail(HttpStatus.INTERNAL_SERVER_ERROR.value(), Integer.toString(temp));

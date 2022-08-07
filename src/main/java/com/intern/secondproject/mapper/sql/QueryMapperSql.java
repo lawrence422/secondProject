@@ -26,7 +26,7 @@ public class QueryMapperSql {
     public String updateBSql(Btype type) {
         return new SQL() {{
             UPDATE("B");
-            SET("B_B=#{B},B_C=#{C},B_D=#{D},B_E=#{E},B_F=#{F},B_aa=#{aa},B_bb=#{bb},B_cc=#{cc},B_dd=#{dd},B_ee=#{ee}");
+            SET("B_B=#{B_B},B_C=#{B_C},B_D=#{B_D},B_E=#{B_E},B_F=#{B_F},B_aa=#{B_aa},B_bb=#{B_bb},B_cc=#{B_cc},B_dd=#{B_dd},B_ee=#{B_ee}");
             WHERE("B_A=#{B_A}");
         }}.toString();
     }
